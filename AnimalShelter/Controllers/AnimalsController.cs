@@ -13,9 +13,17 @@ namespace AnimalShelter.Controllers
     {
       _db = db;
     }
-    public ActionResult Index()
+    public ActionResult Index(string sorting)
     {
-      List<Animal> model = _db.Animals.ToList();
+      List<Animal> model = new List<Animal> {};
+      if(sorting == "breed")
+      {
+      model = _db.Animals.OrderBy(animal => animal.Breed).ToList();
+      }
+      else 
+      {
+        model = _db.Animals.ToList();
+      }
       return View(model);
     }
     public ActionResult Create()
