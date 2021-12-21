@@ -20,6 +20,10 @@ namespace AnimalShelter.Controllers
       {
       model = _db.Animals.OrderBy(animal => animal.Breed).ToList();
       }
+      else if(sorting == "admittance-date")
+      {
+      model = _db.Animals.OrderBy(animal => animal.AdmittanceDate).ToList();
+      }
       else 
       {
         model = _db.Animals.ToList();
